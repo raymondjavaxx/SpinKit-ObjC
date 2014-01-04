@@ -27,9 +27,14 @@ static CATransform3D RTSpinKit3DRotationWithPerspective(CGFloat perspective,
 @implementation RTSpinKitView
 
 -(instancetype)initWithStyle:(RTSpinKitViewStyle)style {
+    return [self initWithStyle:style color:[UIColor grayColor]];
+}
+
+-(instancetype)initWithStyle:(RTSpinKitViewStyle)style color:(UIColor*)color {
     self = [super init];
     if (self) {
         _style = style;
+        _color = color;
 
         [self sizeToFit];
 
@@ -46,7 +51,7 @@ static CATransform3D RTSpinKit3DRotationWithPerspective(CGFloat perspective,
         if (style == RTSpinKitViewStylePlane) {
             CALayer *plane = [CALayer layer];
             plane.frame = CGRectInset(self.bounds, 2.0, 2.0);
-            plane.backgroundColor = [[UIColor blackColor] CGColor];
+            plane.backgroundColor = color.CGColor;
             plane.anchorPoint = CGPointMake(0.5, 0.5);
             plane.anchorPointZ = 0.5;
             [self.layer addSublayer:plane];
@@ -77,7 +82,7 @@ static CATransform3D RTSpinKit3DRotationWithPerspective(CGFloat perspective,
             for (NSInteger i=0; i < 2; i+=1) {
                 CALayer *circle = [CALayer layer];
                 circle.frame = CGRectInset(self.bounds, 2.0, 2.0);
-                circle.backgroundColor = [[UIColor grayColor] CGColor];
+                circle.backgroundColor = color.CGColor;
                 circle.anchorPoint = CGPointMake(0.5, 0.5);
                 circle.opacity = 0.6;
                 circle.cornerRadius = CGRectGetHeight(circle.bounds) * 0.5;
@@ -112,7 +117,7 @@ static CATransform3D RTSpinKit3DRotationWithPerspective(CGFloat perspective,
     
             for (NSInteger i=0; i < 5; i+=1) {
                 CALayer *layer = [CALayer layer];
-                layer.backgroundColor = [[UIColor grayColor] CGColor];
+                layer.backgroundColor = color.CGColor;
                 layer.frame = CGRectMake(barWidth * i, 0.0, barWidth - 3.0, CGRectGetHeight(self.bounds));
                 layer.transform = CATransform3DMakeScale(1.0, 0.3, 0.0);
 
@@ -147,7 +152,7 @@ static CATransform3D RTSpinKit3DRotationWithPerspective(CGFloat perspective,
 
             CALayer *circle = [CALayer layer];
             circle.frame = CGRectInset(self.bounds, 2.0, 2.0);
-            circle.backgroundColor = [[UIColor grayColor] CGColor];
+            circle.backgroundColor = color.CGColor;
             circle.anchorPoint = CGPointMake(0.5, 0.5);
             circle.opacity = 1.0;
             circle.cornerRadius = CGRectGetHeight(circle.bounds) * 0.5;
@@ -227,7 +232,7 @@ static CATransform3D RTSpinKit3DRotationWithPerspective(CGFloat perspective,
     _color = color;
 
     for (CALayer *l in self.layer.sublayers) {
-        l.backgroundColor = [color CGColor];
+        l.backgroundColor = color.CGColor;
     }
 }
 

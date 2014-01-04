@@ -25,7 +25,6 @@
     UIView *panel = [[UIView alloc] initWithFrame:CGRectOffset(screenBounds, screenWidth * index, 0.0)];
     panel.backgroundColor = backgroundColor;
 
-    spinner.color = [UIColor whiteColor];
     spinner.center = CGPointMake(CGRectGetMidX(screenBounds), CGRectGetMidY(screenBounds));
     [panel addSubview:spinner];
 
@@ -41,19 +40,19 @@
     scrollView.backgroundColor = [UIColor darkGrayColor];
     self.view = scrollView;
 
-    [self insertSpinner:[[RTSpinKitView alloc] initWithStyle:RTSpinKitViewStylePlane]
+    [self insertSpinner:[[RTSpinKitView alloc] initWithStyle:RTSpinKitViewStylePlane color:[UIColor whiteColor]]
                 atIndex:0
         backgroundColor:[UIColor colorWithRed:0.827 green:0.329 blue:0 alpha:1.0]];
 
-    [self insertSpinner:[[RTSpinKitView alloc] initWithStyle:RTSpinKitViewStyleBounce]
+    [self insertSpinner:[[RTSpinKitView alloc] initWithStyle:RTSpinKitViewStyleBounce color:[UIColor whiteColor]]
                 atIndex:1
         backgroundColor:[UIColor colorWithRed:0.173 green:0.243 blue:0.314 alpha:1.0]];
 
-    [self insertSpinner:[[RTSpinKitView alloc] initWithStyle:RTSpinKitViewStyleWave]
+    [self insertSpinner:[[RTSpinKitView alloc] initWithStyle:RTSpinKitViewStyleWave color:[UIColor whiteColor]]
                 atIndex:2
         backgroundColor:[UIColor colorWithRed:0.102 green:0.737 blue:0.612 alpha:1.0]];
 
-    [self insertSpinner:[[RTSpinKitView alloc] initWithStyle:RTSpinKitViewStylePulse]
+    [self insertSpinner:[[RTSpinKitView alloc] initWithStyle:RTSpinKitViewStylePulse color:[UIColor whiteColor]]
                 atIndex:3
         backgroundColor:[UIColor colorWithRed:0.498 green:0.549 blue:0.553 alpha:1.0]];
 
