@@ -16,6 +16,7 @@ Available styles:
 * `RTSpinKitViewStylePlane`
 * `RTSpinKitViewStyleBounce`
 * `RTSpinKitViewStyleWave`
+* `RTSpinKitViewStyleWanderingCubes`
 * `RTSpinKitViewStylePulse`
 
 MBProgressHUD
