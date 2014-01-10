@@ -26,5 +26,6 @@ typedef NS_ENUM(NSInteger, RTSpinKitViewStyle) {
 
 -(void)startAnimating;
 -(void)stopAnimating;
+-(BOOL)isAnimating;
 
 @end

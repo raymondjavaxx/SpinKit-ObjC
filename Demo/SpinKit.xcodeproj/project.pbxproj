@@ -48,9 +48,9 @@
 		F646196D1874E9FC00ED6B1B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F646196F1874E9FC00ED6B1B /* SpinKitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpinKitTests.m; sourceTree = "<group>"; };
 		F646197C1874EC8D00ED6B1B /* RTTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTTestViewController.h; sourceTree = "<group>"; };
-		F646197D1874EC8D00ED6B1B /* RTTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTTestViewController.m; sourceTree = "<group>"; };
+		F646197D1874EC8D00ED6B1B /* RTTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTTestViewController.m; sourceTree = "<group>"; usesTabs = 0; };
 		F646198018753E5200ED6B1B /* RTSpinKitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RTSpinKitView.h; path = ../../SpinKit/RTSpinKitView.h; sourceTree = "<group>"; };
-		F646198118753E5200ED6B1B /* RTSpinKitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RTSpinKitView.m; path = ../../SpinKit/RTSpinKitView.m; sourceTree = "<group>"; };
+		F646198118753E5200ED6B1B /* RTSpinKitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RTSpinKitView.m; path = ../../SpinKit/RTSpinKitView.m; sourceTree = "<group>"; usesTabs = 0; };
 		F646198318753F2400ED6B1B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 

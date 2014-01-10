@@ -26,6 +26,8 @@
     panel.backgroundColor = backgroundColor;
 
     spinner.center = CGPointMake(CGRectGetMidX(screenBounds), CGRectGetMidY(screenBounds));
+    [spinner startAnimating];
+
     [panel addSubview:spinner];
 
     UIScrollView *scrollView = (UIScrollView*)self.view;

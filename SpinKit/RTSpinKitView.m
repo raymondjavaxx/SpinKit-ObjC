@@ -25,7 +25,7 @@ static CATransform3D RTSpinKit3DRotationWithPerspective(CGFloat perspective,
 
 @interface RTSpinKitView ()
 @property (nonatomic, assign) RTSpinKitViewStyle style;
-@property (nonatomic, assign) BOOL stopped;
+@property (nonatomic, assign, getter = isStopped) BOOL stopped;
 @end
 
 @implementation RTSpinKitView
@@ -39,6 +39,7 @@ static CATransform3D RTSpinKit3DRotationWithPerspective(CGFloat perspective,
     if (self) {
         _style = style;
         _color = color;
+        _hidesWhenStopped = YES;
 
         [self sizeToFit];
 
@@ -238,6 +239,8 @@ static CATransform3D RTSpinKit3DRotationWithPerspective(CGFloat perspective,
             [self.layer addSublayer:circle];
             [circle addAnimation:animGroup forKey:@"spinkit-anim"];
         }
+
+        [self stopAnimating];
     }
     return self;
 }
@@ -254,19 +257,27 @@ static CATransform3D RTSpinKit3DRotationWithPerspective(CGFloat perspective,
     [self pauseLayers];
 }
 
+-(BOOL)isAnimating {
+	return !self.isStopped;
+}
+
 -(void)startAnimating {
-    self.hidden = NO;
-    self.stopped = NO;
-    [self resumeLayers];
+	if (self.isStopped) {
+		self.hidden = NO;
+		self.stopped = NO;
+		[self resumeLayers];
+	}
 }
 
 -(void)stopAnimating {
-    if (self.hidesWhenStopped) {
-        self.hidden = YES;
-    }
-
-    self.stopped = YES;
-    [self pauseLayers];
+	if ([self isAnimating]) {
+		if (self.hidesWhenStopped) {
+			self.hidden = YES;
+		}
+		
+		self.stopped = YES;
+		[self pauseLayers];
+	}
 }
 
 -(void)pauseLayers {
