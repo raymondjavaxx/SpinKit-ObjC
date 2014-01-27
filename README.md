@@ -24,11 +24,15 @@ MBProgressHUD
 
 SpinKit integrates nicely with the amazing [MBProgressHUD](https://github.com/jdg/MBProgressHUD) library:
 
+    RTSpinKitView *spinner = [[RTSpinKitView alloc] initWithStyle:RTSpinKitViewStyleWave color:[UIColor whiteColor]];
+
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.square = YES;
     hud.mode = MBProgressHUDModeCustomView;
-    hud.customView = [[RTSpinKitView alloc] initWithStyle:RTSpinKitViewStyleWave color:[UIColor whiteColor]];
+    hud.customView = spinner;
     hud.labelText = NSLocalizedString(@"Loading", @"Loading");
+
+    [spinner startAnimating];
 
 Acknowledgements
 ----------------
