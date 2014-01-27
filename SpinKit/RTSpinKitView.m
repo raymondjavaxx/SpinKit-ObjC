@@ -59,6 +59,8 @@ static CATransform3D RTSpinKit3DRotationWithPerspective(CGFloat perspective,
             plane.backgroundColor = color.CGColor;
             plane.anchorPoint = CGPointMake(0.5, 0.5);
             plane.anchorPointZ = 0.5;
+            plane.shouldRasterize = YES;
+            plane.rasterizationScale = [[UIScreen mainScreen] scale];
             [self.layer addSublayer:plane];
 
             CAKeyframeAnimation *anim = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
@@ -162,6 +164,8 @@ static CATransform3D RTSpinKit3DRotationWithPerspective(CGFloat perspective,
                 cube.backgroundColor = color.CGColor;
                 cube.frame = CGRectMake(0.0, 0.0, cubeSize, cubeSize);
                 cube.anchorPoint = CGPointMake(0.5, 0.5);
+                cube.shouldRasterize = YES;
+                cube.rasterizationScale = [[UIScreen mainScreen] scale];
 
                 CAKeyframeAnimation *anim = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
                 anim.removedOnCompletion = NO;
