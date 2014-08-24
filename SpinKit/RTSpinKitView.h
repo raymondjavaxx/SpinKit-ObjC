@@ -20,6 +20,8 @@ typedef NS_ENUM(NSInteger, RTSpinKitViewStyle) {
 
 @property (nonatomic, strong) UIColor *color;
 @property (nonatomic, assign) BOOL hidesWhenStopped;
+@property (nonatomic, assign) RTSpinKitViewStyle style;
+@property (nonatomic, assign, getter = isStopped) BOOL stopped;
 
 -(instancetype)initWithStyle:(RTSpinKitViewStyle)style;
 -(instancetype)initWithStyle:(RTSpinKitViewStyle)style color:(UIColor*)color;
