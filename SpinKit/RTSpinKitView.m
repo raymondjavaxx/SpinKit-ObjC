@@ -307,6 +307,43 @@ static CATransform3D RTSpinKit3DRotationWithPerspective(CGFloat perspective,
                 [circle addAnimation:anim forKey:@"spinkit-anim"];
             }
         }
+        else if (style == RTSpinKitViewStyleThreeBounce) {
+            NSTimeInterval beginTime = CACurrentMediaTime();
+            
+            CGFloat offset = self.bounds.size.width / 8;
+            CGFloat size = offset * 2;
+            
+            for (NSInteger i=0; i < 3; i+=1) {
+                CALayer *circle = [CALayer layer];
+                circle.frame = CGRectMake(i * 3 * offset, self.center.y, size, size);
+                circle.backgroundColor = color.CGColor;
+                circle.anchorPoint = CGPointMake(0.5, 0.5);
+                circle.cornerRadius = CGRectGetHeight(circle.bounds) * 0.5;
+                circle.transform = CATransform3DMakeScale(0.0, 0.0, 0.0);
+                
+                CAKeyframeAnimation *anim = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
+                anim.removedOnCompletion = NO;
+                anim.repeatCount = HUGE_VALF;
+                anim.duration = 1.5;
+                anim.beginTime = beginTime + (0.25 * i);
+                anim.keyTimes = @[@(0.0), @(0.5), @(1.0)];
+                
+                anim.timingFunctions = @[
+                                         [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
+                                         [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
+                                         [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]
+                                         ];
+                
+                anim.values = @[
+                                [NSValue valueWithCATransform3D:CATransform3DMakeScale(0.0, 0.0, 0.0)],
+                                [NSValue valueWithCATransform3D:CATransform3DMakeScale(1.0, 1.0, 0.0)],
+                                [NSValue valueWithCATransform3D:CATransform3DMakeScale(0.0, 0.0, 0.0)]
+                                ];
+                
+                [self.layer addSublayer:circle];
+                [circle addAnimation:anim forKey:@"spinkit-anim"];
+            }
+        }
 
         [self stopAnimating];
     }
