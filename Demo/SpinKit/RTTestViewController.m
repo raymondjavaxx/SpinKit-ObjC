@@ -70,8 +70,12 @@
                 atIndex:6
         backgroundColor:[UIColor colorWithRed:0.83 green:0.33 blue:0.0 alpha:1.0]];
     
+    [self insertSpinner:[[RTSpinKitView alloc] initWithStyle:RTSpinKitViewStyleCircle color:[UIColor whiteColor]]
+                atIndex:7
+        backgroundColor:[UIColor colorWithRed:0.15 green:0.68 blue:0.38 alpha:1.0]];
+    
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
-    scrollView.contentSize = CGSizeMake(7 * CGRectGetWidth(screenBounds), CGRectGetHeight(screenBounds));
+    scrollView.contentSize = CGSizeMake(8 * CGRectGetWidth(screenBounds), CGRectGetHeight(screenBounds));
 }
 
 -(UIStatusBarStyle)preferredStatusBarStyle {
