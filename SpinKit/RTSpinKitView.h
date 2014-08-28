@@ -16,7 +16,8 @@ typedef NS_ENUM(NSInteger, RTSpinKitViewStyle) {
     RTSpinKitViewStylePulse,
     RTSpinKitViewStyleChasingDots,
     RTSpinKitViewStyleThreeBounce,
-    RTSpinKitViewStyleCircle
+    RTSpinKitViewStyleCircle,
+    RTSpinKitViewStyle9CubeGrid
 };
 
 @interface RTSpinKitView : UIView
