@@ -80,11 +80,11 @@
     
     [self insertSpinner:[[RTSpinKitView alloc] initWithStyle:RTSpinKitViewStyleWordPress color:[UIColor whiteColor]]
                 atIndex:9
-        backgroundColor:[UIColor colorWithRed:0.68 green:0.15 blue:0.47 alpha:1.0]];
+        backgroundColor:[UIColor colorWithRed:0.08 green:0.57 blue:0.86 alpha:1.0]];
     
     [self insertSpinner:[[RTSpinKitView alloc] initWithStyle:RTSpinKitViewStyleFadingCircle color:[UIColor whiteColor]]
                 atIndex:10
-        backgroundColor:[UIColor colorWithRed:0.68 green:0.15 blue:0.47 alpha:1.0]];
+        backgroundColor:[UIColor colorWithRed:0.0 green:0.60 blue:0.24 alpha:1.0]];
     
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
     scrollView.contentSize = CGSizeMake(11 * CGRectGetWidth(screenBounds), CGRectGetHeight(screenBounds));
