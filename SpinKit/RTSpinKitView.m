@@ -40,14 +40,14 @@ static CATransform3D RTSpinKit3DRotationWithPerspective(CGFloat perspective,
         _style = style;
         _color = color;
         _hidesWhenStopped = YES;
-
+        
         [self sizeToFit];
-
+        
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(applicationWillEnterForeground)
                                                      name:UIApplicationWillEnterForegroundNotification
                                                    object:nil];
-
+        
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(applicationDidEnterBackground)
                                                      name:UIApplicationDidEnterBackgroundNotification
@@ -62,28 +62,28 @@ static CATransform3D RTSpinKit3DRotationWithPerspective(CGFloat perspective,
             plane.shouldRasterize = YES;
             plane.rasterizationScale = [[UIScreen mainScreen] scale];
             [self.layer addSublayer:plane];
-
+            
             CAKeyframeAnimation *anim = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
             anim.removedOnCompletion = NO;
             anim.repeatCount = HUGE_VALF;
             anim.duration = 1.2;
             anim.keyTimes = @[@(0.0), @(0.5), @(1.0)];
-
+            
             anim.timingFunctions = @[
-                [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
-                [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
-                [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]
-            ];
-
+                                     [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
+                                     [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
+                                     [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]
+                                     ];
+            
             anim.values = @[
-                [NSValue valueWithCATransform3D:RTSpinKit3DRotationWithPerspective(1.0/120.0, 0, 0, 0, 0)],
-                [NSValue valueWithCATransform3D:RTSpinKit3DRotationWithPerspective(1.0/120.0, M_PI, 0.0, 1.0,0.0)],
-                [NSValue valueWithCATransform3D:RTSpinKit3DRotationWithPerspective(1.0/120.0, M_PI, 0.0, 0.0,1.0)]
-            ];
-
+                            [NSValue valueWithCATransform3D:RTSpinKit3DRotationWithPerspective(1.0/120.0, 0, 0, 0, 0)],
+                            [NSValue valueWithCATransform3D:RTSpinKit3DRotationWithPerspective(1.0/120.0, M_PI, 0.0, 1.0,0.0)],
+                            [NSValue valueWithCATransform3D:RTSpinKit3DRotationWithPerspective(1.0/120.0, M_PI, 0.0, 0.0,1.0)]
+                            ];
+            
             [plane addAnimation:anim forKey:@"spinkit-anim"];
         }
-        else if (style == RTSpinKitViewStyleCircle) {
+        else if (style == RTSpinKitViewStyleCircleFlip) {
             CALayer *circle = [CALayer layer];
             circle.frame = CGRectInset(self.bounds, 2.0, 2.0);
             circle.backgroundColor = color.CGColor;
@@ -116,7 +116,7 @@ static CATransform3D RTSpinKit3DRotationWithPerspective(CGFloat perspective,
         }
         else if (style == RTSpinKitViewStyleBounce) {
             NSTimeInterval beginTime = CACurrentMediaTime();
-
+            
             for (NSInteger i=0; i < 2; i+=1) {
                 CALayer *circle = [CALayer layer];
                 circle.frame = CGRectInset(self.bounds, 2.0, 2.0);
@@ -125,26 +125,26 @@ static CATransform3D RTSpinKit3DRotationWithPerspective(CGFloat perspective,
                 circle.opacity = 0.6;
                 circle.cornerRadius = CGRectGetHeight(circle.bounds) * 0.5;
                 circle.transform = CATransform3DMakeScale(0.0, 0.0, 0.0);
-
+                
                 CAKeyframeAnimation *anim = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
                 anim.removedOnCompletion = NO;
                 anim.repeatCount = HUGE_VALF;
                 anim.duration = 2.0;
                 anim.beginTime = beginTime - (1.0 * i);
                 anim.keyTimes = @[@(0.0), @(0.5), @(1.0)];
-
+                
                 anim.timingFunctions = @[
-                    [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
-                    [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
-                    [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]
-                ];
-
+                                         [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
+                                         [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
+                                         [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]
+                                         ];
+                
                 anim.values = @[
-                    [NSValue valueWithCATransform3D:CATransform3DMakeScale(0.0, 0.0, 0.0)],
-                    [NSValue valueWithCATransform3D:CATransform3DMakeScale(1.0, 1.0, 0.0)],
-                    [NSValue valueWithCATransform3D:CATransform3DMakeScale(0.0, 0.0, 0.0)]
-                ];
-
+                                [NSValue valueWithCATransform3D:CATransform3DMakeScale(0.0, 0.0, 0.0)],
+                                [NSValue valueWithCATransform3D:CATransform3DMakeScale(1.0, 1.0, 0.0)],
+                                [NSValue valueWithCATransform3D:CATransform3DMakeScale(0.0, 0.0, 0.0)]
+                                ];
+                
                 [self.layer addSublayer:circle];
                 [circle addAnimation:anim forKey:@"spinkit-anim"];
             }
@@ -152,35 +152,35 @@ static CATransform3D RTSpinKit3DRotationWithPerspective(CGFloat perspective,
         else if (style == RTSpinKitViewStyleWave) {
             NSTimeInterval beginTime = CACurrentMediaTime() + 1.2;
             CGFloat barWidth = CGRectGetWidth(self.bounds) / 5.0;
-    
+            
             for (NSInteger i=0; i < 5; i+=1) {
                 CALayer *layer = [CALayer layer];
                 layer.backgroundColor = color.CGColor;
                 layer.frame = CGRectMake(barWidth * i, 0.0, barWidth - 3.0, CGRectGetHeight(self.bounds));
                 layer.transform = CATransform3DMakeScale(1.0, 0.3, 0.0);
-
+                
                 CAKeyframeAnimation *anim = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
                 anim.removedOnCompletion = NO;
                 anim.beginTime = beginTime - (1.2 - (0.1 * i));
                 anim.duration = 1.2;
                 anim.repeatCount = HUGE_VALF;
-
+                
                 anim.keyTimes = @[@(0.0), @(0.2), @(0.4), @(1.0)];
-
+                
                 anim.timingFunctions = @[
-                    [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
-                    [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
-                    [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
-                    [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]
-                ];
-
+                                         [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
+                                         [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
+                                         [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
+                                         [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]
+                                         ];
+                
                 anim.values = @[
-                    [NSValue valueWithCATransform3D:CATransform3DMakeScale(1.0, 0.4, 0.0)],
-                    [NSValue valueWithCATransform3D:CATransform3DMakeScale(1.0, 1.0, 0.0)],
-                    [NSValue valueWithCATransform3D:CATransform3DMakeScale(1.0, 0.4, 0.0)],
-                    [NSValue valueWithCATransform3D:CATransform3DMakeScale(1.0, 0.4, 0.0)]
-                ];
-
+                                [NSValue valueWithCATransform3D:CATransform3DMakeScale(1.0, 0.4, 0.0)],
+                                [NSValue valueWithCATransform3D:CATransform3DMakeScale(1.0, 1.0, 0.0)],
+                                [NSValue valueWithCATransform3D:CATransform3DMakeScale(1.0, 0.4, 0.0)],
+                                [NSValue valueWithCATransform3D:CATransform3DMakeScale(1.0, 0.4, 0.0)]
+                                ];
+                
                 [self.layer addSublayer:layer];
                 [layer addAnimation:anim forKey:@"spinkit-anim"];
             }
@@ -189,7 +189,7 @@ static CATransform3D RTSpinKit3DRotationWithPerspective(CGFloat perspective,
             NSTimeInterval beginTime = CACurrentMediaTime();
             CGFloat cubeSize = floor(CGRectGetWidth(self.bounds) / 3.0);
             CGFloat widthMinusCubeSize = CGRectGetWidth(self.bounds) - cubeSize;
-
+            
             for (NSInteger i=0; i<2; i+=1) {
                 CALayer *cube = [CALayer layer];
                 cube.backgroundColor = color.CGColor;
@@ -197,25 +197,25 @@ static CATransform3D RTSpinKit3DRotationWithPerspective(CGFloat perspective,
                 cube.anchorPoint = CGPointMake(0.5, 0.5);
                 cube.shouldRasterize = YES;
                 cube.rasterizationScale = [[UIScreen mainScreen] scale];
-
+                
                 CAKeyframeAnimation *anim = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
                 anim.removedOnCompletion = NO;
                 anim.beginTime = beginTime - (i * 0.9);
                 anim.duration = 1.8;
                 anim.repeatCount = HUGE_VALF;
-
+                
                 anim.keyTimes = @[@(0.0), @(0.25), @(0.50), @(0.75), @(1.0)];
-
+                
                 anim.timingFunctions = @[
-                    [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
-                    [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
-                    [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
-                    [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
-                    [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]
-                ];
-
+                                         [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
+                                         [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
+                                         [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
+                                         [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
+                                         [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]
+                                         ];
+                
                 CATransform3D t0 = CATransform3DIdentity;
-
+                
                 CATransform3D t1 = CATransform3DMakeTranslation(widthMinusCubeSize, 0.0, 0.0);
                 t1 = CATransform3DRotate(t1, -90.0 * kRTSpinKitDegToRad, 0.0, 0.0, 1.0);
                 t1 = CATransform3DScale(t1, 0.5, 0.5, 1.0);
@@ -231,21 +231,21 @@ static CATransform3D RTSpinKit3DRotationWithPerspective(CGFloat perspective,
                 CATransform3D t4 = CATransform3DMakeTranslation(0.0, 0.0, 0.0);
                 t4 = CATransform3DRotate(t4, -360.0 * kRTSpinKitDegToRad, 0.0, 0.0, 1.0);
                 t4 = CATransform3DScale(t4, 1.0, 1.0, 1.0);
-
-
+                
+                
                 anim.values = @[[NSValue valueWithCATransform3D:t0],
                                 [NSValue valueWithCATransform3D:t1],
                                 [NSValue valueWithCATransform3D:t2],
                                 [NSValue valueWithCATransform3D:t3],
                                 [NSValue valueWithCATransform3D:t4]];
-
+                
                 [self.layer addSublayer:cube];
                 [cube addAnimation:anim forKey:@"spinkit-anim"];
             }
         }
         else if (style == RTSpinKitViewStylePulse) {
             NSTimeInterval beginTime = CACurrentMediaTime();
-
+            
             CALayer *circle = [CALayer layer];
             circle.frame = CGRectInset(self.bounds, 2.0, 2.0);
             circle.backgroundColor = color.CGColor;
@@ -253,16 +253,16 @@ static CATransform3D RTSpinKit3DRotationWithPerspective(CGFloat perspective,
             circle.opacity = 1.0;
             circle.cornerRadius = CGRectGetHeight(circle.bounds) * 0.5;
             circle.transform = CATransform3DMakeScale(0.0, 0.0, 0.0);
-
+            
             CAKeyframeAnimation *scaleAnim = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
             scaleAnim.values = @[
-                [NSValue valueWithCATransform3D:CATransform3DMakeScale(0.0, 0.0, 0.0)],
-                [NSValue valueWithCATransform3D:CATransform3DMakeScale(1.0, 1.0, 0.0)]
-            ];
-
+                                 [NSValue valueWithCATransform3D:CATransform3DMakeScale(0.0, 0.0, 0.0)],
+                                 [NSValue valueWithCATransform3D:CATransform3DMakeScale(1.0, 1.0, 0.0)]
+                                 ];
+            
             CAKeyframeAnimation *opacityAnim = [CAKeyframeAnimation animationWithKeyPath:@"opacity"];
             opacityAnim.values = @[@(1.0), @(0.0)];
-
+            
             CAAnimationGroup *animGroup = [CAAnimationGroup animation];
             animGroup.removedOnCompletion = NO;
             animGroup.beginTime = beginTime;
@@ -270,11 +270,302 @@ static CATransform3D RTSpinKit3DRotationWithPerspective(CGFloat perspective,
             animGroup.duration = 1.0;
             animGroup.animations = @[scaleAnim, opacityAnim];
             animGroup.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-
+            
             [self.layer addSublayer:circle];
             [circle addAnimation:animGroup forKey:@"spinkit-anim"];
         }
-
+        else if (style == RTSpinKitViewStyleChasingDots) {
+            NSTimeInterval beginTime = CACurrentMediaTime();
+            
+            CALayer *spinner = [CALayer layer];
+            spinner.frame = self.bounds;
+            spinner.anchorPoint = CGPointMake(0.5, 0.5);
+            spinner.transform = CATransform3DIdentity;
+            spinner.shouldRasterize = YES;
+            spinner.rasterizationScale = [[UIScreen mainScreen] scale];
+            [self.layer addSublayer:spinner];
+            
+            
+            CAKeyframeAnimation *spinnerAnim = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
+            spinnerAnim.removedOnCompletion = NO;
+            spinnerAnim.repeatCount = HUGE_VALF;
+            spinnerAnim.duration = 2.0;
+            spinnerAnim.beginTime = beginTime;
+            spinnerAnim.keyTimes = @[@(0.0), @(0.25), @(0.5), @(0.75), @(1.0)];
+            
+            spinnerAnim.timingFunctions = @[
+                                            [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear],
+                                            [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear],
+                                            [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear],
+                                            [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear],
+                                            [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear]
+                                            ];
+            spinnerAnim.values = @[
+                                   [NSValue valueWithCATransform3D:CATransform3DMakeRotation(0, 0, 0, 1.0)],
+                                   [NSValue valueWithCATransform3D:CATransform3DMakeRotation(M_PI_2, 0, 0, 1.0)],
+                                   [NSValue valueWithCATransform3D:CATransform3DMakeRotation(M_PI, 0, 0, 1.0)],
+                                   [NSValue valueWithCATransform3D:CATransform3DMakeRotation(3 * M_PI_2, 0, 0, 1.0)],
+                                   [NSValue valueWithCATransform3D:CATransform3DMakeRotation(2 * M_PI, 0, 0, 1.0)]
+                                   ];
+            
+            [spinner addAnimation:spinnerAnim forKey:@"spinner-anim"];
+            
+            for (NSInteger i=0; i < 2; i+=1) {
+                CALayer *circle = [CALayer layer];
+                CGFloat offset = self.bounds.size.width * 0.3 * i;
+                circle.frame = CGRectOffset(CGRectApplyAffineTransform(self.bounds, CGAffineTransformMakeScale(0.6, 0.6)), offset, offset);
+                circle.backgroundColor = color.CGColor;
+                circle.anchorPoint = CGPointMake(0.5, 0.5);
+                circle.cornerRadius = CGRectGetHeight(circle.bounds) * 0.5;
+                circle.transform = CATransform3DMakeScale(0.0, 0.0, 0.0);
+                
+                CAKeyframeAnimation *anim = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
+                anim.removedOnCompletion = NO;
+                anim.repeatCount = HUGE_VALF;
+                anim.duration = 2.0;
+                anim.beginTime = beginTime - (1.0 * i);
+                anim.keyTimes = @[@(0.0), @(0.5), @(1.0)];
+                
+                anim.timingFunctions = @[
+                                         [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
+                                         [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
+                                         [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]
+                                         ];
+                
+                anim.values = @[
+                                [NSValue valueWithCATransform3D:CATransform3DMakeScale(0.0, 0.0, 0.0)],
+                                [NSValue valueWithCATransform3D:CATransform3DMakeScale(1.0, 1.0, 0.0)],
+                                [NSValue valueWithCATransform3D:CATransform3DMakeScale(0.0, 0.0, 0.0)]
+                                ];
+                
+                [spinner addSublayer:circle];
+                [circle addAnimation:anim forKey:@"spinkit-anim"];
+            }
+        }
+        else if (style == RTSpinKitViewStyleThreeBounce) {
+            NSTimeInterval beginTime = CACurrentMediaTime();
+            
+            CGFloat offset = self.bounds.size.width / 8;
+            CGFloat size = offset * 2;
+            
+            for (NSInteger i=0; i < 3; i+=1) {
+                CALayer *circle = [CALayer layer];
+                circle.frame = CGRectMake(i * 3 * offset, self.center.y, size, size);
+                circle.backgroundColor = color.CGColor;
+                circle.anchorPoint = CGPointMake(0.5, 0.5);
+                circle.cornerRadius = CGRectGetHeight(circle.bounds) * 0.5;
+                circle.transform = CATransform3DMakeScale(0.0, 0.0, 0.0);
+                
+                CAKeyframeAnimation *anim = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
+                anim.removedOnCompletion = NO;
+                anim.repeatCount = HUGE_VALF;
+                anim.duration = 1.5;
+                anim.beginTime = beginTime + (0.25 * i);
+                anim.keyTimes = @[@(0.0), @(0.5), @(1.0)];
+                
+                anim.timingFunctions = @[
+                                         [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
+                                         [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
+                                         [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]
+                                         ];
+                
+                anim.values = @[
+                                [NSValue valueWithCATransform3D:CATransform3DMakeScale(0.0, 0.0, 0.0)],
+                                [NSValue valueWithCATransform3D:CATransform3DMakeScale(1.0, 1.0, 0.0)],
+                                [NSValue valueWithCATransform3D:CATransform3DMakeScale(0.0, 0.0, 0.0)]
+                                ];
+                
+                [self.layer addSublayer:circle];
+                [circle addAnimation:anim forKey:@"spinkit-anim"];
+            }
+        }
+        else if (style == RTSpinKitViewStyleCircle) {
+            NSTimeInterval beginTime = CACurrentMediaTime();
+            
+            CGFloat radius = self.bounds.size.width / 2;
+            CGFloat size = self.bounds.size.width / 4;
+            
+            for (NSInteger i=0; i < 8; i+=1) {
+                CALayer *circle = [CALayer layer];
+                
+                CGFloat angle = i * M_PI_4;
+                CGFloat x = radius + sinf(angle) * radius;
+                CGFloat y = radius - cosf(angle) * radius;
+                circle.frame = CGRectMake(x, y, size, size);
+                circle.backgroundColor = color.CGColor;
+                circle.anchorPoint = CGPointMake(0.5, 0.5);
+                circle.cornerRadius = CGRectGetHeight(circle.bounds) * 0.5;
+                circle.transform = CATransform3DMakeScale(0.0, 0.0, 0.0);
+                
+                CAKeyframeAnimation *anim = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
+                anim.removedOnCompletion = NO;
+                anim.repeatCount = HUGE_VALF;
+                anim.duration = 1.0;
+                anim.beginTime = beginTime + (0.125 * i);
+                anim.keyTimes = @[@(0.0), @(0.5), @(1.0)];
+                
+                anim.timingFunctions = @[
+                                         [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
+                                         [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
+                                         [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]
+                                         ];
+                
+                anim.values = @[
+                                [NSValue valueWithCATransform3D:CATransform3DMakeScale(0.0, 0.0, 0.0)],
+                                [NSValue valueWithCATransform3D:CATransform3DMakeScale(1.0, 1.0, 0.0)],
+                                [NSValue valueWithCATransform3D:CATransform3DMakeScale(0.0, 0.0, 0.0)]
+                                ];
+                
+                [self.layer addSublayer:circle];
+                [circle addAnimation:anim forKey:@"spinkit-anim"];
+            }
+        }
+        else if (style == RTSpinKitViewStyle9CubeGrid) {
+            NSTimeInterval beginTime = CACurrentMediaTime();
+            
+            CGFloat size = self.bounds.size.width/3;
+            
+            for(NSInteger sum = 0; sum < 5; sum++)
+            {
+                for(NSInteger x = 0; x < 3; x++)
+                {
+                    for(NSInteger y = 0; y < 3; y++)
+                    {
+                        if(x + y == sum)
+                        {
+                            CALayer *square = [CALayer layer];
+                            square.frame = CGRectMake(x * size, y * size, size, size);
+                            square.backgroundColor = color.CGColor;
+                            square.transform = CATransform3DMakeScale(0.0, 0.0, 0.0);
+                            
+                            CAKeyframeAnimation *anim = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
+                            anim.removedOnCompletion = NO;
+                            anim.repeatCount = HUGE_VALF;
+                            anim.duration = 1.5;
+                            anim.beginTime = beginTime + (0.1 * sum);
+                            anim.keyTimes = @[@(0.0), @(0.4), @(0.6), @(1.0)];
+                            
+                            anim.timingFunctions = @[
+                                                     [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
+                                                     [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
+                                                     [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
+                                                     [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]
+                                                     ];
+                            
+                            anim.values = @[
+                                            [NSValue valueWithCATransform3D:CATransform3DMakeScale(0.0, 0.0, 0.0)],
+                                            [NSValue valueWithCATransform3D:CATransform3DMakeScale(1.0, 1.0, 0.0)],
+                                            [NSValue valueWithCATransform3D:CATransform3DMakeScale(1.0, 1.0, 0.0)],
+                                            [NSValue valueWithCATransform3D:CATransform3DMakeScale(0.0, 0.0, 0.0)]
+                                            ];
+                            
+                            [self.layer addSublayer:square];
+                            [square addAnimation:anim forKey:@"spinkit-anim"];
+                        }
+                    }
+                }
+            }
+        }
+        else if (style == RTSpinKitViewStyleWordPress) {
+            NSTimeInterval beginTime = CACurrentMediaTime();
+            
+            CALayer *spinner = [CALayer layer];
+            spinner.frame = self.bounds;
+            spinner.anchorPoint = CGPointMake(0.5, 0.5);
+            spinner.transform = CATransform3DIdentity;
+            spinner.backgroundColor = color.CGColor;
+            spinner.shouldRasterize = YES;
+            spinner.rasterizationScale = [[UIScreen mainScreen] scale];
+            [self.layer addSublayer:spinner];
+            
+            
+            CAKeyframeAnimation *spinnerAnim = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
+            spinnerAnim.removedOnCompletion = NO;
+            spinnerAnim.repeatCount = HUGE_VALF;
+            spinnerAnim.duration = 1.0;
+            spinnerAnim.beginTime = beginTime;
+            spinnerAnim.keyTimes = @[@(0.0), @(0.25), @(0.5), @(0.75), @(1.0)];
+            
+            spinnerAnim.timingFunctions = @[
+                                            [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear],
+                                            [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear],
+                                            [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear],
+                                            [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear],
+                                            [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear]
+                                            ];
+            spinnerAnim.values = @[
+                                   [NSValue valueWithCATransform3D:CATransform3DMakeRotation(0, 0, 0, 1.0)],
+                                   [NSValue valueWithCATransform3D:CATransform3DMakeRotation(M_PI_2, 0, 0, 1.0)],
+                                   [NSValue valueWithCATransform3D:CATransform3DMakeRotation(M_PI, 0, 0, 1.0)],
+                                   [NSValue valueWithCATransform3D:CATransform3DMakeRotation(3 * M_PI_2, 0, 0, 1.0)],
+                                   [NSValue valueWithCATransform3D:CATransform3DMakeRotation(2 * M_PI, 0, 0, 1.0)]
+                                   ];
+            
+            [spinner addAnimation:spinnerAnim forKey:@"spinner-anim"];
+            
+            
+            CAShapeLayer *circleMask = [CAShapeLayer layer];
+            circleMask.frame = spinner.bounds;
+            circleMask.fillColor = [UIColor blackColor].CGColor;
+            circleMask.anchorPoint = CGPointMake(0.5, 0.5);
+            
+            CGMutablePathRef path = CGPathCreateMutable();
+            CGPathAddEllipseInRect(path, nil, spinner.frame);
+            
+            CGFloat size = self.bounds.size.width * 0.25;
+            CGPathAddEllipseInRect(path, nil, CGRectMake(self.center.x - size/2, 3.0, size, size));
+            CGPathCloseSubpath(path);
+            circleMask.path = path;
+            circleMask.fillRule = kCAFillRuleEvenOdd;
+            CGPathRelease(path);
+            
+            spinner.mask = circleMask;
+        }
+        else if (style == RTSpinKitViewStyleFadingCircle) {
+            NSTimeInterval beginTime = CACurrentMediaTime();
+            
+            CGFloat radius = self.bounds.size.width / 2;
+            CGFloat size = self.bounds.size.width / 6;
+            
+            for (NSInteger i=0; i < 12; i+=1) {
+                CALayer *square = [CALayer layer];
+                
+                CGFloat angle = i * (M_PI_2/3.0);
+                CGFloat x = radius + sinf(angle) * radius;
+                CGFloat y = radius - cosf(angle) * radius;
+                square.frame = CGRectMake(x, y, size, size);
+                square.backgroundColor = color.CGColor;
+                square.anchorPoint = CGPointMake(0.5, 0.5);
+                square.opacity = 0.0;
+                
+                CATransform3D transform = CATransform3DIdentity;
+                transform = CATransform3DRotate(transform, angle, 0, 0, 1.0);
+                square.transform = transform;
+                
+                
+                CAKeyframeAnimation *anim = [CAKeyframeAnimation animationWithKeyPath:@"opacity"];
+                anim.removedOnCompletion = NO;
+                anim.repeatCount = HUGE_VALF;
+                anim.duration = 1.0;
+                anim.beginTime = beginTime + (0.084 * i);
+                anim.keyTimes = @[@(0.0), @(0.5), @(1.0)];
+                
+                anim.timingFunctions = @[
+                                         [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
+                                         [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]
+                                         ];
+                
+                
+                anim.values = @[
+                                @(1.0),
+                                @(0.0),
+                                @(0.0)
+                                ];
+                
+                [self.layer addSublayer:square];
+                [square addAnimation:anim forKey:@"spinkit-anim"];
+            }
+        }
         [self stopAnimating];
     }
     return self;
@@ -336,7 +627,7 @@ static CATransform3D RTSpinKit3DRotationWithPerspective(CGFloat perspective,
 
 -(void)setColor:(UIColor *)color {
     _color = color;
-
+    
     for (CALayer *l in self.layer.sublayers) {
         l.backgroundColor = color.CGColor;
     }
