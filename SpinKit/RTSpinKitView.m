@@ -84,16 +84,15 @@ static CATransform3D RTSpinKit3DRotationWithPerspective(CGFloat perspective,
             [plane addAnimation:anim forKey:@"spinkit-anim"];
         }
         else if (style == RTSpinKitViewStyleCircle) {
-            UIBezierPath* ovalPath = [UIBezierPath bezierPathWithOvalInRect: CGRectInset(self.bounds, 2.0, 2.0)];
-            CAShapeLayer *plane = [CAShapeLayer layer];
-            plane.fillColor = color.CGColor;
-            plane.path = ovalPath.CGPath;
-            plane.frame = self.bounds;
-            plane.anchorPoint = CGPointMake(0.5, 0.5);
-            plane.anchorPointZ = 0.5;
-            plane.shouldRasterize = YES;
-            plane.rasterizationScale = [[UIScreen mainScreen] scale];
-            [self.layer addSublayer:plane];
+            CALayer *circle = [CALayer layer];
+            circle.frame = CGRectInset(self.bounds, 2.0, 2.0);
+            circle.backgroundColor = color.CGColor;
+            circle.cornerRadius = CGRectGetHeight(circle.bounds) * 0.5;
+            circle.anchorPoint = CGPointMake(0.5, 0.5);
+            circle.anchorPointZ = 0.5;
+            circle.shouldRasterize = YES;
+            circle.rasterizationScale = [[UIScreen mainScreen] scale];
+            [self.layer addSublayer:circle];
             
             CAKeyframeAnimation *anim = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
             anim.removedOnCompletion = NO;
@@ -102,18 +101,18 @@ static CATransform3D RTSpinKit3DRotationWithPerspective(CGFloat perspective,
             anim.keyTimes = @[@(0.0), @(0.5), @(1.0)];
             
             anim.timingFunctions = @[
-                                     [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
-                                     [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
-                                     [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]
-                                     ];
-            
+                [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
+                [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
+                [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]
+            ];
+
             anim.values = @[
-                            [NSValue valueWithCATransform3D:RTSpinKit3DRotationWithPerspective(1.0/120.0, 0, 0, 0, 0)],
-                            [NSValue valueWithCATransform3D:RTSpinKit3DRotationWithPerspective(1.0/120.0, M_PI, 0.0, 1.0, 0.0)],
-                            [NSValue valueWithCATransform3D:RTSpinKit3DRotationWithPerspective(1.0/120.0, M_PI, 0.0, 0.0, 1.0)]
-                            ];
+                [NSValue valueWithCATransform3D:RTSpinKit3DRotationWithPerspective(1.0/120.0, 0, 0, 0, 0)],
+                [NSValue valueWithCATransform3D:RTSpinKit3DRotationWithPerspective(1.0/120.0, M_PI, 0.0, 1.0, 0.0)],
+                [NSValue valueWithCATransform3D:RTSpinKit3DRotationWithPerspective(1.0/120.0, M_PI, 0.0, 0.0, 1.0)]
+            ];
             
-            [plane addAnimation:anim forKey:@"spinkit-anim"];
+            [circle addAnimation:anim forKey:@"spinkit-anim"];
         }
         else if (style == RTSpinKitViewStyleBounce) {
             NSTimeInterval beginTime = CACurrentMediaTime();
