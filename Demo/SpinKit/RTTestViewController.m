@@ -78,8 +78,12 @@
                 atIndex:8
         backgroundColor:[UIColor colorWithRed:0.68 green:0.15 blue:0.47 alpha:1.0]];
     
+    [self insertSpinner:[[RTSpinKitView alloc] initWithStyle:RTSpinKitViewStyleWordPress color:[UIColor whiteColor]]
+                atIndex:9
+        backgroundColor:[UIColor colorWithRed:0.68 green:0.15 blue:0.47 alpha:1.0]];
+    
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
-    scrollView.contentSize = CGSizeMake(9 * CGRectGetWidth(screenBounds), CGRectGetHeight(screenBounds));
+    scrollView.contentSize = CGSizeMake(10 * CGRectGetWidth(screenBounds), CGRectGetHeight(screenBounds));
 }
 
 -(UIStatusBarStyle)preferredStatusBarStyle {
