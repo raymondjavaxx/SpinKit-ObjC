@@ -20,7 +20,8 @@ typedef NS_ENUM(NSInteger, RTSpinKitViewStyle) {
     RTSpinKitViewStyleCircle,
     RTSpinKitViewStyle9CubeGrid,
     RTSpinKitViewStyleWordPress,
-    RTSpinKitViewStyleFadingCircle
+    RTSpinKitViewStyleFadingCircle,
+    RTSpinKitViewStyleFadingCircleAlt
 };
 
 @interface RTSpinKitView : UIView
