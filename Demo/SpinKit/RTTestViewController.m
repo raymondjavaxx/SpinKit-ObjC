@@ -110,8 +110,13 @@
         backgroundColor:[UIColor colorWithRed:0.0 green:0.60 blue:0.24 alpha:1.0]
                   label:@"FadingCircle"];
     
+    [self insertSpinner:[[RTSpinKitView alloc] initWithStyle:RTSpinKitViewStyleFadingCircleAlt color:[UIColor whiteColor]]
+                atIndex:12
+        backgroundColor:[UIColor colorWithRed:0.60 green:0.0 blue:0.0 alpha:1.0]
+                  label:@"FadingCircleAlt"];
+    
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
-    scrollView.contentSize = CGSizeMake(12 * CGRectGetWidth(screenBounds), CGRectGetHeight(screenBounds));
+    scrollView.contentSize = CGSizeMake(13 * CGRectGetWidth(screenBounds), CGRectGetHeight(screenBounds));
 }
 
 -(UIStatusBarStyle)preferredStatusBarStyle {
