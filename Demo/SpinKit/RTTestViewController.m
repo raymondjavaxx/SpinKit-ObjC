@@ -41,7 +41,10 @@
     }
     else
     {
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
         label.textAlignment = UITextAlignmentCenter;
+#pragma GCC diagnostic pop
         label.backgroundColor = [UIColor clearColor];
     }
     [panel addSubview:label];
