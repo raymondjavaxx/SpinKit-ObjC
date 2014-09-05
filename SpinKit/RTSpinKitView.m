@@ -90,26 +90,26 @@ static const CGFloat kRTSpinKitViewDefaultSpinnerSize = 37.0;
 }
 
 -(BOOL)isAnimating {
-	return !self.isStopped;
+    return !self.isStopped;
 }
 
 -(void)startAnimating {
-	if (self.isStopped) {
-		self.hidden = NO;
-		self.stopped = NO;
-		[self resumeLayers];
-	}
+    if (self.isStopped) {
+        self.hidden = NO;
+        self.stopped = NO;
+        [self resumeLayers];
+    }
 }
 
 -(void)stopAnimating {
-	if ([self isAnimating]) {
-		if (self.hidesWhenStopped) {
-			self.hidden = YES;
-		}
-		
-		self.stopped = YES;
-		[self pauseLayers];
-	}
+    if ([self isAnimating]) {
+        if (self.hidesWhenStopped) {
+            self.hidden = YES;
+        }
+        
+        self.stopped = YES;
+        [self pauseLayers];
+    }
 }
 
 -(void)pauseLayers {
