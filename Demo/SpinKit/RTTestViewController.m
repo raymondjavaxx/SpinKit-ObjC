@@ -35,7 +35,15 @@
     label.text = labelString;
     label.font = [UIFont systemFontOfSize:25.0];
     label.textColor = [UIColor whiteColor];
-    label.textAlignment = NSTextAlignmentCenter;
+    if ([label respondsToSelector:@selector(tintColor)])
+    {
+        label.textAlignment = NSTextAlignmentCenter;
+    }
+    else
+    {
+        label.textAlignment = UITextAlignmentCenter;
+        label.backgroundColor = [UIColor clearColor];
+    }
     [panel addSubview:label];
     
     UIScrollView *scrollView = (UIScrollView*)self.view;
@@ -47,6 +55,7 @@
     scrollView.pagingEnabled = YES;
     scrollView.alwaysBounceVertical = NO;
     scrollView.alwaysBounceHorizontal = YES;
+    scrollView.directionalLockEnabled = YES;
     scrollView.backgroundColor = [UIColor darkGrayColor];
     self.view = scrollView;
 
