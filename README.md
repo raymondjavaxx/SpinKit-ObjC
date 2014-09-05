@@ -14,10 +14,18 @@ Simply instantiate `RTSpinKitView` with the desired style and add to your view h
 Available styles:
 
 * `RTSpinKitViewStylePlane`
+* `RTSpinKitViewStyleCircleFlip`
 * `RTSpinKitViewStyleBounce`
 * `RTSpinKitViewStyleWave`
 * `RTSpinKitViewStyleWanderingCubes`
 * `RTSpinKitViewStylePulse`
+* `RTSpinKitViewStyleChasingDots`
+* `RTSpinKitViewStyleThreeBounce`
+* `RTSpinKitViewStyleCircle`
+* `RTSpinKitViewStyle9CubeGrid`
+* `RTSpinKitViewStyleWordPress`
+* `RTSpinKitViewStyleFadingCircle`
+* `RTSpinKitViewStyleFadingCircleAl`
 
 MBProgressHUD
 -------------
