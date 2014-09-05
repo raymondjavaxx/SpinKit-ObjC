@@ -288,6 +288,9 @@
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Ramon Torres";
 				TargetAttributes = {
+					F64619461874E9FB00ED6B1B = {
+						DevelopmentTeam = S47GJ5WB9Z;
+					};
 					F64619611874E9FC00ED6B1B = {
 						TestTargetID = F64619461874E9FB00ED6B1B;
 					};
@@ -461,6 +464,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SpinKit/SpinKit-Prefix.pch";
 				INFOPLIST_FILE = "SpinKit/SpinKit-Info.plist";
@@ -476,6 +480,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SpinKit/SpinKit-Prefix.pch";
 				INFOPLIST_FILE = "SpinKit/SpinKit-Info.plist";
