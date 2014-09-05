@@ -14,7 +14,6 @@
 static const CGFloat kRTSpinKitViewDefaultSpinnerSize = 37.0;
 
 @interface RTSpinKitView ()
-@property (nonatomic, assign) CGFloat spinnerSize;
 @end
 
 @implementation RTSpinKitView
@@ -60,6 +59,12 @@ static const CGFloat kRTSpinKitViewDefaultSpinnerSize = 37.0;
 -(void)setStyle:(RTSpinKitViewStyle)style {
     _style = style;
     [self applyAnimation];
+}
+
+-(void)setSpinnerSize:(CGFloat)spinnerSize {
+    _spinnerSize = spinnerSize;
+    [self applyAnimation];
+    [self invalidateIntrinsicContentSize];
 }
 
 #pragma mark - Animation
@@ -123,6 +128,10 @@ static const CGFloat kRTSpinKitViewDefaultSpinnerSize = 37.0;
 }
 
 -(CGSize)sizeThatFits:(CGSize)size {
+    return CGSizeMake(self.spinnerSize, self.spinnerSize);
+}
+
+-(CGSize)intrinsicContentSize {
     return CGSizeMake(self.spinnerSize, self.spinnerSize);
 }
 
