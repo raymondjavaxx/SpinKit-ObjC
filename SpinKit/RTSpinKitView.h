@@ -33,6 +33,7 @@ typedef NS_ENUM(NSInteger, RTSpinKitViewStyle) {
 
 -(instancetype)initWithStyle:(RTSpinKitViewStyle)style;
 -(instancetype)initWithStyle:(RTSpinKitViewStyle)style color:(UIColor*)color;
+-(instancetype)initWithStyle:(RTSpinKitViewStyle)style color:(UIColor*)color spinnerSize:(CGFloat)spinnerSize;
 
 -(void)startAnimating;
 -(void)stopAnimating;
