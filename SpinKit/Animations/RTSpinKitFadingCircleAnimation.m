@@ -23,6 +23,7 @@
 //
 
 #import "RTSpinKitFadingCircleAnimation.h"
+#include <tgmath.h>
 
 @implementation RTSpinKitFadingCircleAnimation
 

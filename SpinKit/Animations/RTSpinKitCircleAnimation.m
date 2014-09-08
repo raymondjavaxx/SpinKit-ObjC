@@ -23,6 +23,7 @@
 //
 
 #import "RTSpinKitCircleAnimation.h"
+#include <tgmath.h>
 
 @implementation RTSpinKitCircleAnimation
 

@@ -23,6 +23,7 @@
 //
 
 #import "RTSpinKitFadingCircleAltAnimation.h"
+#include <tgmath.h>
 
 static const CGFloat kRTSpinKitDegToRad = 0.0174532925;
 
