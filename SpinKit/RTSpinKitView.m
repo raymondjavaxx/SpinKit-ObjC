@@ -87,9 +87,7 @@ static const CGFloat kRTSpinKitViewDefaultSpinnerSize = 37.0;
 
 -(void)applyAnimation {
     // Remove any sublayer.
-    for (CALayer *sublayer in self.layer.sublayers) {
-        [sublayer removeFromSuperlayer];
-    }
+    self.layer.sublayers = nil;
 
     CGSize size = CGSizeMake(self.spinnerSize, self.spinnerSize);
     NSObject<RTSpinKitAnimating> *animation = RTSpinKitAnimationFromStyle(self.style);
