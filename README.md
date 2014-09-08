@@ -22,9 +22,9 @@ Simply instantiate `RTSpinKitView` with the desired style and add to your view h
     RTSpinKitView *spinner = [[RTSpinKitView alloc] initWithStyle:RTSpinKitViewStyleWave];
     [self.view addSubview:spinner];
 
-You can change the size of the spinner by manipulating the `size` property. The default size is `37.0`.
+You can change the size of the spinner by manipulating the `spinnerSize` property. The default size is `37.0`.
 
-    spinner.size = 100.0;
+    spinner.spinnerSize = 100.0;
     [spinner sizeToFit];
 
 Available styles:
