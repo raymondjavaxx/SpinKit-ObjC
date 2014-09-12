@@ -42,15 +42,12 @@ static const CGFloat kRTSpinKitDegToRad = 0.0174532925;
 	arc.anchorPoint = CGPointMake(0.5, 0.5);
 	arc.cornerRadius = CGRectGetWidth(arc.frame) / 2.0;
 
-	UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:center
-														radius:radius
-													startAngle:0.0
-													  endAngle:kRTSpinKitDegToRad * 300
-													 clockwise:YES];
+	CGMutablePathRef path = CGPathCreateMutable();
+	CGPathAddArc(path, NULL, center.x, center.y, radius, 0.0, kRTSpinKitDegToRad * 300.0, NO);
 
 	CAShapeLayer *mask = [CAShapeLayer layer];
 	mask.frame        = CGRectMake(0.0, 0.0, size.width, size.height);
-	mask.path         = path.CGPath;
+	mask.path         = path;
 	mask.strokeColor  = [[UIColor blackColor] CGColor];
 	mask.fillColor    = [[UIColor clearColor] CGColor];
 	mask.lineWidth    = 2.0;
@@ -58,6 +55,8 @@ static const CGFloat kRTSpinKitDegToRad = 0.0174532925;
 	mask.anchorPoint  = CGPointMake(0.5, 0.5);
 
 	arc.mask = mask;
+
+	CGPathRelease(path);
 
 	CAKeyframeAnimation *anim = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
 	anim.removedOnCompletion = NO;
