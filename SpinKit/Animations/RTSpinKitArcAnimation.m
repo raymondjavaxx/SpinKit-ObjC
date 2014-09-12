@@ -30,49 +30,49 @@ static const CGFloat kRTSpinKitDegToRad = 0.0174532925;
 
 -(void)setupSpinKitAnimationInLayer:(CALayer *)layer withSize:(CGSize)size color:(UIColor *)color
 {
-	NSTimeInterval beginTime = CACurrentMediaTime();
+    NSTimeInterval beginTime = CACurrentMediaTime();
 
-	CGRect  frame  = CGRectInset(CGRectMake(0.0, 0.0, size.width, size.height), 2.0, 2.0);
-	CGFloat radius = CGRectGetWidth(frame) / 2.0;
-	CGPoint center = CGPointMake(CGRectGetMidX(frame), CGRectGetMidY(frame));
+    CGRect  frame  = CGRectInset(CGRectMake(0.0, 0.0, size.width, size.height), 2.0, 2.0);
+    CGFloat radius = CGRectGetWidth(frame) / 2.0;
+    CGPoint center = CGPointMake(CGRectGetMidX(frame), CGRectGetMidY(frame));
 
-	CALayer *arc = [CALayer layer];
-	arc.frame = CGRectMake(0.0, 0.0, size.width, size.height);
-	arc.backgroundColor = color.CGColor;
-	arc.anchorPoint = CGPointMake(0.5, 0.5);
-	arc.cornerRadius = CGRectGetWidth(arc.frame) / 2.0;
+    CALayer *arc = [CALayer layer];
+    arc.frame = CGRectMake(0.0, 0.0, size.width, size.height);
+    arc.backgroundColor = color.CGColor;
+    arc.anchorPoint = CGPointMake(0.5, 0.5);
+    arc.cornerRadius = CGRectGetWidth(arc.frame) / 2.0;
 
-	CGMutablePathRef path = CGPathCreateMutable();
-	CGPathAddArc(path, NULL, center.x, center.y, radius, 0.0, kRTSpinKitDegToRad * 300.0, NO);
+    CGMutablePathRef path = CGPathCreateMutable();
+    CGPathAddArc(path, NULL, center.x, center.y, radius, 0.0, kRTSpinKitDegToRad * 300.0, NO);
 
-	CAShapeLayer *mask = [CAShapeLayer layer];
-	mask.frame        = CGRectMake(0.0, 0.0, size.width, size.height);
-	mask.path         = path;
-	mask.strokeColor  = [[UIColor blackColor] CGColor];
-	mask.fillColor    = [[UIColor clearColor] CGColor];
-	mask.lineWidth    = 2.0;
-	mask.cornerRadius = frame.size.width / 2.0;
-	mask.anchorPoint  = CGPointMake(0.5, 0.5);
+    CAShapeLayer *mask = [CAShapeLayer layer];
+    mask.frame        = CGRectMake(0.0, 0.0, size.width, size.height);
+    mask.path         = path;
+    mask.strokeColor  = [[UIColor blackColor] CGColor];
+    mask.fillColor    = [[UIColor clearColor] CGColor];
+    mask.lineWidth    = 2.0;
+    mask.cornerRadius = frame.size.width / 2.0;
+    mask.anchorPoint  = CGPointMake(0.5, 0.5);
 
-	arc.mask = mask;
+    arc.mask = mask;
 
-	CGPathRelease(path);
+    CGPathRelease(path);
 
-	CAKeyframeAnimation *anim = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
-	anim.removedOnCompletion = NO;
-	anim.repeatCount = HUGE_VALF;
-	anim.duration = 0.8;
-	anim.beginTime = beginTime;
-	anim.keyTimes = @[@(0.0), @(0.5), @(1.0)];
+    CAKeyframeAnimation *anim = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
+    anim.removedOnCompletion = NO;
+    anim.repeatCount = HUGE_VALF;
+    anim.duration = 0.8;
+    anim.beginTime = beginTime;
+    anim.keyTimes = @[@(0.0), @(0.5), @(1.0)];
 
-	anim.values = @[
-		[NSValue valueWithCATransform3D:CATransform3DMakeRotation(M_PI*2.0, 0.0, 0.0, 1.0)],
-		[NSValue valueWithCATransform3D:CATransform3DMakeRotation(M_PI, 0.0, 0.0, 1.0)],
-		[NSValue valueWithCATransform3D:CATransform3DMakeRotation(0.0, 0.0, 0.0, 1.0)]
-	];
+    anim.values = @[
+        [NSValue valueWithCATransform3D:CATransform3DMakeRotation(M_PI*2.0, 0.0, 0.0, 1.0)],
+        [NSValue valueWithCATransform3D:CATransform3DMakeRotation(M_PI, 0.0, 0.0, 1.0)],
+        [NSValue valueWithCATransform3D:CATransform3DMakeRotation(0.0, 0.0, 0.0, 1.0)]
+    ];
 
-	[layer addSublayer:arc];
-	[arc addAnimation:anim forKey:@"spinkit-anim"];
+    [layer addSublayer:arc];
+    [arc addAnimation:anim forKey:@"spinkit-anim"];
 }
 
 @end

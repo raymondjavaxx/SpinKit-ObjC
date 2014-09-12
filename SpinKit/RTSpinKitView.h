@@ -38,7 +38,7 @@ typedef NS_ENUM(NSInteger, RTSpinKitViewStyle) {
     RTSpinKitViewStyleWordPress,
     RTSpinKitViewStyleFadingCircle,
     RTSpinKitViewStyleFadingCircleAlt,
-	RTSpinKitViewStyleArc
+    RTSpinKitViewStyleArc
 };
 
 /**
@@ -102,8 +102,8 @@ typedef NS_ENUM(NSInteger, RTSpinKitViewStyle) {
  @return The newly-initialized SpinKit view.
  */
 -(instancetype)initWithStyle:(RTSpinKitViewStyle)style
-					   color:(UIColor*)color
-				 spinnerSize:(CGFloat)spinnerSize;
+                       color:(UIColor*)color
+                 spinnerSize:(CGFloat)spinnerSize;
 
 /**
  Starts the animation of the activity indicator.

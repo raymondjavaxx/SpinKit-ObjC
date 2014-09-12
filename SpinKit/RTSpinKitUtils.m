@@ -92,9 +92,9 @@ NSObject<RTSpinKitAnimating>* RTSpinKitAnimationFromStyle(RTSpinKitViewStyle sty
 
         case RTSpinKitViewStyleFadingCircleAlt:
             return [[RTSpinKitFadingCircleAltAnimation alloc] init];
-		
-		case RTSpinKitViewStyleArc:
-			return [[RTSpinKitArcAnimation alloc] init];
+
+        case RTSpinKitViewStyleArc:
+            return [[RTSpinKitArcAnimation alloc] init];
 
         default:
             NSCAssert(NO, @"Unicorns exist");
