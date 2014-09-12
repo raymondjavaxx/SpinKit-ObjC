@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02EE552619C22DA600D58D49 /* RTSpinKitArcAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 02EE552519C22DA600D58D49 /* RTSpinKitArcAnimation.m */; };
 		F646194B1874E9FB00ED6B1B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F646194A1874E9FB00ED6B1B /* Foundation.framework */; };
 		F646194D1874E9FB00ED6B1B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F646194C1874E9FB00ED6B1B /* CoreGraphics.framework */; };
 		F646194F1874E9FB00ED6B1B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F646194E1874E9FB00ED6B1B /* UIKit.framework */; };
@@ -47,6 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		02EE552419C22DA600D58D49 /* RTSpinKitArcAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTSpinKitArcAnimation.h; sourceTree = "<group>"; };
+		02EE552519C22DA600D58D49 /* RTSpinKitArcAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTSpinKitArcAnimation.m; sourceTree = "<group>"; };
 		F64619471874E9FB00ED6B1B /* SpinKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpinKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F646194A1874E9FB00ED6B1B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F646194C1874E9FB00ED6B1B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -235,6 +238,8 @@
 				F6BC23BF19B972340055D239 /* RTSpinKitWaveAnimation.m */,
 				F6BC23C019B972340055D239 /* RTSpinKitWordPressAnimation.h */,
 				F6BC23C119B972340055D239 /* RTSpinKitWordPressAnimation.m */,
+				02EE552419C22DA600D58D49 /* RTSpinKitArcAnimation.h */,
+				02EE552519C22DA600D58D49 /* RTSpinKitArcAnimation.m */,
 			);
 			name = Animations;
 			path = ../../SpinKit/Animations;
@@ -354,6 +359,7 @@
 				F6BC23CC19B972340055D239 /* RTSpinKitWanderingCubesAnimation.m in Sources */,
 				F6BC23C219B972340055D239 /* RTSpinKit9CubeGridAnimation.m in Sources */,
 				F6BC23C519B972340055D239 /* RTSpinKitCircleAnimation.m in Sources */,
+				02EE552619C22DA600D58D49 /* RTSpinKitArcAnimation.m in Sources */,
 				F6BC23CD19B972340055D239 /* RTSpinKitWaveAnimation.m in Sources */,
 				F6BC23C819B972340055D239 /* RTSpinKitFadingCircleAnimation.m in Sources */,
 			);
