@@ -24,8 +24,6 @@
 
 #import "RTSpinKitArcAnimation.h"
 
-static const CGFloat kRTSpinKitDegToRad = 0.0174532925;
-
 @implementation RTSpinKitArcAnimation
 
 -(void)setupSpinKitAnimationInLayer:(CALayer *)layer withSize:(CGSize)size color:(UIColor *)color
@@ -43,7 +41,7 @@ static const CGFloat kRTSpinKitDegToRad = 0.0174532925;
     arc.cornerRadius = CGRectGetWidth(arc.frame) / 2.0;
 
     CGMutablePathRef path = CGPathCreateMutable();
-    CGPathAddArc(path, NULL, center.x, center.y, radius, 0.0, kRTSpinKitDegToRad * 300.0, NO);
+    CGPathAddArc(path, NULL, center.x, center.y, radius, 0.0, ((M_PI * 2.0) / 360.0) * 300.0, NO);
 
     CAShapeLayer *mask = [CAShapeLayer layer];
     mask.frame        = CGRectMake(0.0, 0.0, size.width, size.height);
@@ -58,7 +56,7 @@ static const CGFloat kRTSpinKitDegToRad = 0.0174532925;
 
     CGPathRelease(path);
 
-    CAKeyframeAnimation *anim = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
+    CAKeyframeAnimation *anim = [CAKeyframeAnimation animationWithKeyPath:@"transform.rotation.z"];
     anim.removedOnCompletion = NO;
     anim.repeatCount = HUGE_VALF;
     anim.duration = 0.8;
@@ -66,9 +64,9 @@ static const CGFloat kRTSpinKitDegToRad = 0.0174532925;
     anim.keyTimes = @[@(0.0), @(0.5), @(1.0)];
 
     anim.values = @[
-        [NSValue valueWithCATransform3D:CATransform3DMakeRotation(M_PI*2.0, 0.0, 0.0, 1.0)],
-        [NSValue valueWithCATransform3D:CATransform3DMakeRotation(M_PI, 0.0, 0.0, 1.0)],
-        [NSValue valueWithCATransform3D:CATransform3DMakeRotation(0.0, 0.0, 0.0, 1.0)]
+        [NSNumber numberWithDouble:0.0],
+		[NSNumber numberWithDouble:M_PI],
+		[NSNumber numberWithDouble:M_PI * 2.0]
     ];
 
     [layer addSublayer:arc];
