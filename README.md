@@ -6,7 +6,7 @@ UIKit port of [SpinKit](https://github.com/tobiasahlin/SpinKit).
 Installing
 ----------
 
-[CocoaPods](http://cocoapods.org/) is the recommended for adding SpinKit to your project.
+[CocoaPods](http://cocoapods.org/) is the recommended way for adding SpinKit to your project.
 
     pod 'SpinKit', '~> 1.1'
 
