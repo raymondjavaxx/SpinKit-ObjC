@@ -41,7 +41,9 @@ Available styles:
 * `RTSpinKitViewStyle9CubeGrid`
 * `RTSpinKitViewStyleWordPress`
 * `RTSpinKitViewStyleFadingCircle`
-* `RTSpinKitViewStyleFadingCircleAl`
+* `RTSpinKitViewStyleFadingCircleAlt`
+* `RTSpinKitViewStyleArc`
+* `RTSpinKitViewStyleArcAlt`
 
 MBProgressHUD
 -------------
