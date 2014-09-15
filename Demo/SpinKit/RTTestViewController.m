@@ -26,7 +26,6 @@
     scrollView.backgroundColor = [UIColor darkGrayColor];
     self.view = scrollView;
 
-
     [self insertSpinnerOfStyle: RTSpinKitViewStylePlane
                backgroundColor:[UIColor colorWithRed:0.827 green:0.329 blue:0 alpha:1.0]
                          label:@"Plane"];
@@ -82,6 +81,10 @@
     [self insertSpinnerOfStyle: RTSpinKitViewStyleArc
                backgroundColor:[UIColor colorWithRed:0.56 green:0.27 blue:0.68 alpha:1.0]
                          label:@"Arc"];
+
+    [self insertSpinnerOfStyle: RTSpinKitViewStyleArcAlt
+               backgroundColor:[UIColor colorWithRed:0.91 green:0.3 blue:0.24 alpha:1.0]
+                         label:@"ArcAlt"];
 
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
     scrollView.contentSize = CGSizeMake(self.numberOfSpinners * CGRectGetWidth(screenBounds), CGRectGetHeight(screenBounds));

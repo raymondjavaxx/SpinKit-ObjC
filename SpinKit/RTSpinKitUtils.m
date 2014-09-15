@@ -39,6 +39,7 @@
 #import "RTSpinKitWaveAnimation.h"
 #import "RTSpinKitWordPressAnimation.h"
 #import "RTSpinKitArcAnimation.h"
+#import "RTSpinKitArcAltAnimation.h"
 
 CATransform3D RTSpinKit3DRotationWithPerspective(CGFloat perspective,
                                                         CGFloat angle,
@@ -95,6 +96,9 @@ NSObject<RTSpinKitAnimating>* RTSpinKitAnimationFromStyle(RTSpinKitViewStyle sty
 
         case RTSpinKitViewStyleArc:
             return [[RTSpinKitArcAnimation alloc] init];
+			
+		case RTSpinKitViewStyleArcAlt:
+			return [[RTSpinKitArcAltAnimation alloc] init];
 
         default:
             NSCAssert(NO, @"Unicorns exist");
