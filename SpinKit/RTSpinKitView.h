@@ -123,4 +123,12 @@ typedef NS_ENUM(NSInteger, RTSpinKitViewStyle) {
  */
 -(BOOL)isAnimating;
 
+/**
+ Sets the color of the spinner.
+ 
+ @param color The desired color for the spinner.
+ @param animated Whether or not to animate.
+ */
+-(void)setColor:(UIColor *)color animated:(BOOL)animated;
+
 @end
