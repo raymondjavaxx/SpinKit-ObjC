@@ -22,6 +22,7 @@
 		F646197E1874EC8D00ED6B1B /* RTTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F646197D1874EC8D00ED6B1B /* RTTestViewController.m */; };
 		F646198218753E5200ED6B1B /* RTSpinKitView.m in Sources */ = {isa = PBXBuildFile; fileRef = F646198118753E5200ED6B1B /* RTSpinKitView.m */; };
 		F646198418753F2400ED6B1B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F646198318753F2400ED6B1B /* Images.xcassets */; };
+		F66970181BD2285000450708 /* LanchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F66970171BD2285000450708 /* LanchScreen.xib */; settings = {ASSET_TAGS = (); }; };
 		F6BC23C219B972340055D239 /* RTSpinKit9CubeGridAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = F6BC23A919B972340055D239 /* RTSpinKit9CubeGridAnimation.m */; };
 		F6BC23C319B972340055D239 /* RTSpinKitBounceAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = F6BC23AB19B972340055D239 /* RTSpinKitBounceAnimation.m */; };
 		F6BC23C419B972340055D239 /* RTSpinKitChasingDotsAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = F6BC23AD19B972340055D239 /* RTSpinKitChasingDotsAnimation.m */; };
@@ -72,6 +73,7 @@
 		F646198018753E5200ED6B1B /* RTSpinKitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RTSpinKitView.h; path = ../../SpinKit/RTSpinKitView.h; sourceTree = "<group>"; usesTabs = 0; };
 		F646198118753E5200ED6B1B /* RTSpinKitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RTSpinKitView.m; path = ../../SpinKit/RTSpinKitView.m; sourceTree = "<group>"; usesTabs = 0; };
 		F646198318753F2400ED6B1B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		F66970171BD2285000450708 /* LanchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LanchScreen.xib; sourceTree = "<group>"; };
 		F6BC23A819B972340055D239 /* RTSpinKit9CubeGridAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTSpinKit9CubeGridAnimation.h; sourceTree = "<group>"; };
 		F6BC23A919B972340055D239 /* RTSpinKit9CubeGridAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTSpinKit9CubeGridAnimation.m; sourceTree = "<group>"; };
 		F6BC23AA19B972340055D239 /* RTSpinKitBounceAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTSpinKitBounceAnimation.h; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				F64619521874E9FB00ED6B1B /* SpinKit-Info.plist */,
 				F64619561874E9FB00ED6B1B /* main.m */,
 				F64619581874E9FB00ED6B1B /* SpinKit-Prefix.pch */,
+				F66970171BD2285000450708 /* LanchScreen.xib */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F66970181BD2285000450708 /* LanchScreen.xib in Resources */,
 				F646198418753F2400ED6B1B /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -475,7 +479,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SpinKit/SpinKit-Prefix.pch";
@@ -491,7 +494,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SpinKit/SpinKit-Prefix.pch";
