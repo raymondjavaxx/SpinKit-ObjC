@@ -55,6 +55,9 @@ CATransform3D RTSpinKit3DRotationWithPerspective(CGFloat perspective,
 NSObject<RTSpinKitAnimating>* RTSpinKitAnimationFromStyle(RTSpinKitViewStyle style)
 {
     switch (style) {
+        case RTSpinKitViewStyleCustom:
+            return nil;
+
         case RTSpinKitViewStylePlane:
             return [[RTSpinKitPlaneAnimation alloc] init];
 
