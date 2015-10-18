@@ -61,6 +61,7 @@
     anim.repeatCount = HUGE_VALF;
     anim.duration = 0.8;
     anim.beginTime = beginTime;
+    anim.timeOffset = [[NSDate date] timeIntervalSince1970];
     anim.keyTimes = @[@(0.0), @(0.5), @(1.0)];
 
     anim.values = @[
