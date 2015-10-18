@@ -76,7 +76,7 @@ static const CGFloat kRTSpinKitViewDefaultSpinnerSize = 37.0;
 -(instancetype)initWithAnimator:(id<RTSpinKitAnimating>)animator
                           color:(UIColor*)color
                     spinnerSize:(CGFloat)spinnerSize {
-    self = [super initWithFrame:CGRectMake(0.0, 0.0, spinnerSize, spinnerSize)];
+    self = [self initWithFrame:CGRectMake(0.0, 0.0, spinnerSize, spinnerSize)];
     if (self) {
         _style = RTSpinKitViewStyleCustom;
         _animator = animator;
